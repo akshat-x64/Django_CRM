@@ -1,0 +1,14 @@
+{% include "base.html" %} {% block content %}
+<div class="col-md-6 offser-md-3 text-center">
+  <h1>ADD Record</h1>
+</br>
+
+
+<form method='POST' action='{% url 'add_record' %}'>
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-secondary">Add Record</button>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+   
+    
+        {% if user.is_authenticated %}
+
+        <table class="table table-striped table-bordered table-sm  table-hover table-sm" >
+  <thead>
+    <tr>
+      <th scope="col">Name </th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">ID</th>
+      <th scope="col">Created At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+
+
+
+
+{% if records %}
+{% for aa in records %}
+<tr>
+  <td>  {{aa.first_name}}  {{aa.last_name}}</td>
+  
+  <td>{{aa.email}}</td>
+  <td>{{aa.phone}}</td>
+  <td>{{aa.address}}</td>
+  <td>{{aa.city}}</td>
+  <td>{{aa.state}}</td>
+ <td>   <a href="{% url 'record' aa.id %}">{{aa.id}}</a>
+ </td>
+ <td> {{aa.created_at}}</td>
+</tr>
+{% endfor %}
+
+{% endif %}
+{% else %}
+
+</td>
+
+
+
+
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+      
+       
+<div class='col-md-6 offser-md-3'>
+    
+    <h1>Login!</h1>
+    </br>
+    
+    <form method='POST' action='{% url 'home' %}'>
+       {% csrf_token %}
+       <form>
+        <div class="form-group">
+          
+          <input type="text" class="form-control"  aria-describedby="emailHelp" name='username' placeholder="Username" required>
+         
+        </div>
+        <div class="form-group">
+         
+          <input type="password" class="form-control" name='password' placeholder="Password" required>
+        </div>
+       
+        <button type="submit" class="btn btn-secondary">Log In</button>
+      </form> 
+
+        
+        </form>
+    </div>
+    {% endif %}
+{% endblock %}
